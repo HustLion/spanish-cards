@@ -36,4 +36,4 @@ Then go to <http://localhost:8000>
 
 Color swatch (generated with [Material Palette](http://www.materialpalette.com/indigo/orange))
 
-![Color swatch](icon/color-swatch.svg)
+![Color swatch](https://rawgit.com/HustLion/spanish-cards/master/icon/color-swatch.png)
