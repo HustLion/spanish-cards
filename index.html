@@ -4,9 +4,12 @@
 <head>
     <title>Spanish Cards | Hustlion</title>
     <style type="text/css">
-        #flipButton {
-            margin-top: 20px;
-        }
+    #flipButton {
+        margin-top: 20px;
+    }
+    * {
+        font-family: "Segoe UI";
+    }
     </style>
 </head>
 
@@ -20,18 +23,37 @@
         </div>
         <button id="flipButton" onclick="flipCards()">Flip</button>
     </div>
-    
+    <div id="quickRef">
+        <p>Quick Reference</p>
+    </div>
+
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/jquery.flip.min.js"></script>
     <script>
     $(function($) {
         $("#card").flip();
     });
-    function flipCards(){
-        $("#card").flip('toggle');
-    };
-    </script>
 
+    function flipCards() {
+        $("#card").flip('toggle');
+    }
+    var conjugationList;
+    $.getJSON("data/present.json", function(result) {
+        // $.each(result, function(i, field) {
+        //     $("#quickRef").append(field + " ");
+        // });
+        console.log(result);
+        conjugationList = result;
+        for (var i = 0; i < conjugationList.length; i++){
+            for (var j = 0; j < conjugationList[i].length; j++) {
+                $("#quickRef").append(conjugationList[i][j] + "\t");
+            }
+            $("#quickRef").append("<br />");
+        }
+        // var conjugationList = JSON.parse(result);
+        // console.log(conjugationList);
+    });
+    </script>
 </body>
 
 </html>
