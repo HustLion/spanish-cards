@@ -21,3 +21,11 @@ Then go to <http://localhost:8000>
 # Libs
 
 - [flip](https://github.com/nnattawat/flip)
+
+# Development
+
+## Design
+
+Color swatch (generated with [Material Palette](http://www.materialpalette.com/indigo/orange))
+
+![Color swatch](icon/color-swatch.svg)
