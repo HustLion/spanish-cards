@@ -1,4 +1,12 @@
-# spanish-cards
+# Spanish-Cards
+
+
+<p align="center">
+  <a href="https://github.com/HustLion/spanish-cards">
+    <img src="https://rawgit.com/HustLion/spanish-cards/master/icon/spanish-cards.png" />
+  </a>
+</p>
+
 Web-based flashcards system to practice spanish conjugation effectively
 
 
