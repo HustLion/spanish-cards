@@ -168,10 +168,33 @@ body {
   color: #FFFFFF;
 }
 
+.front-type {
+  /*margin-bottom: 18px;*/
+  position: absolute;
+  margin-top: 182px;
+}
 .back {
   background-color: #C5CAE9;
   color: #3F51B5;
 }
+
+.front-type{
+  bottom: 0;
+  line-height: normal;
+  position: absolute;
+  left: 50%;
+  margin: -100px 0px 0px -35px;
+  font-weight: normal;
+}
+.back-type {
+  bottom: 0;
+  line-height: normal;
+  position: absolute;
+  left: 50%;
+  margin: -100px 0px 0px -100px;
+  font-weight: normal;
+}
+
 
 /*
  * Footer
