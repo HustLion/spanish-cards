@@ -199,6 +199,7 @@ body {
 #quickRef {
   font-size: 18px;
   text-shadow: none;
+  text-align: left;
 }
 /*
  * Footer

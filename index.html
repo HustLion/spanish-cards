@@ -84,8 +84,14 @@
                     
                     
                     <hr class="divider-color" />
-                    <div id="quickRef" class="lead">
-                        <p>Quick Reference</p>
+                    <p>Quick Reference</p>
+                    <div id="quickRef" class="lead table-responsive">
+                        
+                        <table class="table table-hover">
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
                     </div>
                     <p class="lead">
                         <a href="#" class="btn btn-lg btn-default">Learn more</a>
@@ -114,22 +120,27 @@
             $("#front-content").text(conjugationList[1][1]);
     }
 
-    function setCard(wordNumber) {
+    function setCard(wordNumber, previousWordNumber) {
         $("#front-content").text(conjugationList[wordNumber][0]);
         $("#back-content").text(conjugationList[wordNumber][1]);
+        $("#"+conjugationList[wordNumber][0]).addClass("info");
+
+        $("#"+conjugationList[previousWordNumber][0]).hasClass("info") && $("#"+conjugationList[previousWordNumber][0]).removeClass("info");
     }
 
     function nextCard(){
+        previousWord = wordKeyCounter;
         wordKeyCounter = wordKeyCounter< (wordKeySum-1)? ++wordKeyCounter:0;
-        setCard(wordKeyCounter);
+        setCard(wordKeyCounter, previousWord);
     }
 
     function previousCard(){
+        previousWord = wordKeyCounter;
         wordKeyCounter = wordKeyCounter > 0 ? --wordKeyCounter : (wordKeySum - 1);
-        setCard(wordKeyCounter);
+        setCard(wordKeyCounter, previousWord);
     }
 
-    var conjugationList, wordKeyCounter = 0, wordKeySum;
+    var conjugationList, wordKeyCounter = 0, previousWord = 0, wordKeySum;
 
 
     $(document).ready(function() {
@@ -144,16 +155,18 @@
             console.log(result);
             conjugationList = result;
             wordKeySum = conjugationList.length;
+            // format the wordlist and assign the verb as the id for highlighting
             for (var i = 0; i < wordKeySum; i++) {
+                $("#quickRef table tbody").append("<tr id=\""+ conjugationList[i][0] + "\" >");
 
                 for (var j = 0; j < conjugationList[i].length; j++) {
-                    $("#quickRef").append(conjugationList[i][j] + "\t");
+                    $("#"+conjugationList[i][0]).append("<td>" + conjugationList[i][j] + "</td>");
                 }
-                $("#quickRef").append("<br />");
+                //$("#quickRef table tbody").append("</tr>");
             }
             // var conjugationList = JSON.parse(result);
             // console.log(conjugationList);
-            setCard(wordKeyCounter);
+            setCard(wordKeyCounter, previousWord);
         });
 
 
