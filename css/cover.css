@@ -196,7 +196,10 @@ body {
   padding-bottom: 3px;
 }
 
-
+#quickRef {
+  font-size: 18px;
+  text-shadow: none;
+}
 /*
  * Footer
  */
