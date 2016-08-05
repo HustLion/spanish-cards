@@ -62,12 +62,12 @@
                     <div class="flashcard lead">
                         <div id="card" class="card">
                             <div class="front">
-                                <p class="front-content">Front content</p>
+                                <p id="front-content" class="front-content">Front content</p>
                                 <p class="front-type secondary-text-color">Verb</p>
                                 
                             </div>
                             <div class="back">
-                                <p class="back-content">Back content</p>
+                                <p id="back-content" class="back-content">Back content</p>
                                 <p class="back-type secondary-text-color">Conjugation</p>
                             </div>
                         </div>
@@ -75,10 +75,10 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <button id="flipButton" class="btn btn-success" onclick="flipCards()">Previous</button>
+                            <button id="flipButton" class="btn btn-success" onclick="previousCard()">Previous</button>
                         </div>
                         <div class="col-md-6">
-                            <button id="flipButton" class="btn btn-success" onclick="flipCards()">Next</button>
+                            <button id="flipButton" class="btn btn-success" onclick="nextCard()">Next</button>
                         </div>
                     </div>
                     
@@ -110,13 +110,27 @@
     });
 
     function flipCards() {
-        $("#card").flip('toggle');
+            // $("#card").flip('toggle');
+            $("#front-content").text(conjugationList[1][1]);
     }
+
+    function nextCard(){
+        $("#front-content").text(conjugationList[1][0]);
+        $("#back-content").text(conjugationList[1][1]);
+    }
+
+    function previousCard(){
+        $("#front-content").text(conjugationList[2][0]);
+        $("#back-content").text(conjugationList[2][1]);
+    }
+
+    var conjugationList;
+
     $(document).ready(function() {
         // $("p").click(function() {
         //     $(this).hide();
         // });
-        var conjugationList;
+        
         $.getJSON("data/present.json", function(result) {
             // $.each(result, function(i, field) {
             //     $("#quickRef").append(field + " ");
@@ -133,6 +147,8 @@
             // var conjugationList = JSON.parse(result);
             // console.log(conjugationList);
         });
+
+
     });
     </script>
 </body>
