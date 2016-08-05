@@ -2,11 +2,30 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Web-based flashcards system to practice spanish conjugation effectively">
+    <meta name="author" content="Hustlion">
     <title>Spanish Cards | Hustlion</title>
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/cover.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
     <style type="text/css">
     #flipButton {
         margin-top: 20px;
     }
+    
     * {
         font-family: "Segoe UI";
         color: #212121;
@@ -16,21 +35,53 @@
 </head>
 
 <body>
-    <div id="card">
-        <div class="front">
-            Front content
+    <div class="site-wrapper">
+        <div class="site-wrapper-inner">
+            <div class="cover-container">
+                <div class="masthead clearfix">
+                    <div class="inner">
+                        <h3 class="masthead-brand">Cover</h3>
+                        <nav>
+                            <ul class="nav masthead-nav">
+                                <li class="active"><a href="#">Home</a></li>
+                                <li><a href="#">Features</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="inner cover">
+                    <h1 class="cover-heading">Spanish Cards</h1>
+                    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+                    <div id="card" class="lead">
+                        <div class="front">
+                            Front content
+                        </div>
+                        <div class="back">
+                            Back content
+                        </div>
+                        <button id="flipButton" onclick="flipCards()">Flip</button>
+                    </div>
+                    <div id="quickRef" class="lead">
+                        <p>Quick Reference</p>
+                    </div>
+                    <p class="lead">
+                        <a href="#" class="btn btn-lg btn-default">Learn more</a>
+                    </p>
+                </div>
+                <div class="mastfoot">
+                    <div class="inner">
+                        <p>Cover template by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="back">
-            Back content
-        </div>
-        <button id="flipButton" onclick="flipCards()">Flip</button>
     </div>
-    <div id="quickRef">
-        <p>Quick Reference</p>
-    </div>
-
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/jquery.flip.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
     <script>
     $(function($) {
         $("#card").flip();
@@ -39,21 +90,27 @@
     function flipCards() {
         $("#card").flip('toggle');
     }
-    var conjugationList;
-    $.getJSON("data/present.json", function(result) {
-        // $.each(result, function(i, field) {
-        //     $("#quickRef").append(field + " ");
+    $(document).ready(function() {
+        // $("p").click(function() {
+        //     $(this).hide();
         // });
-        console.log(result);
-        conjugationList = result;
-        for (var i = 0; i < conjugationList.length; i++){
-            for (var j = 0; j < conjugationList[i].length; j++) {
-                $("#quickRef").append(conjugationList[i][j] + "\t");
+        var conjugationList;
+        $.getJSON("data/present.json", function(result) {
+            // $.each(result, function(i, field) {
+            //     $("#quickRef").append(field + " ");
+            // });
+            console.log(result);
+            conjugationList = result;
+            for (var i = 0; i < conjugationList.length; i++) {
+                
+                for (var j = 0; j < conjugationList[i].length; j++) {
+                    $("#quickRef").append(conjugationList[i][j] + "\t");
+                }
+                $("#quickRef").append("<br />");
             }
-            $("#quickRef").append("<br />");
-        }
-        // var conjugationList = JSON.parse(result);
-        // console.log(conjugationList);
+            // var conjugationList = JSON.parse(result);
+            // console.log(conjugationList);
+        });
     });
     </script>
 </body>
