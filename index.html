@@ -47,7 +47,7 @@
             <div class="container cover-container">
                 <div class="masthead clearfix">
                     <div class="nav inner">
-                        <h3 class="masthead-brand"><img src="icon/generated/favicon-32x32.png"> Spanish Cards</h2>
+                        <h3 class="masthead-brand"><a href=""><img src="icon/generated/favicon-32x32.png"></a> Spanish Cards</h2>
                         <nav>
                             <ul class="nav masthead-nav">
                                 <li class="active"><a href="#">Home</a></li>
@@ -114,17 +114,23 @@
             $("#front-content").text(conjugationList[1][1]);
     }
 
+    function setCard(wordNumber) {
+        $("#front-content").text(conjugationList[wordNumber][0]);
+        $("#back-content").text(conjugationList[wordNumber][1]);
+    }
+
     function nextCard(){
-        $("#front-content").text(conjugationList[1][0]);
-        $("#back-content").text(conjugationList[1][1]);
+        wordKeyCounter = wordKeyCounter< (wordKeySum-1)? ++wordKeyCounter:0;
+        setCard(wordKeyCounter);
     }
 
     function previousCard(){
-        $("#front-content").text(conjugationList[2][0]);
-        $("#back-content").text(conjugationList[2][1]);
+        wordKeyCounter = wordKeyCounter > 0 ? --wordKeyCounter : (wordKeySum - 1);
+        setCard(wordKeyCounter);
     }
 
-    var conjugationList;
+    var conjugationList, wordKeyCounter = 0, wordKeySum;
+
 
     $(document).ready(function() {
         // $("p").click(function() {
@@ -137,7 +143,8 @@
             // });
             console.log(result);
             conjugationList = result;
-            for (var i = 0; i < conjugationList.length; i++) {
+            wordKeySum = conjugationList.length;
+            for (var i = 0; i < wordKeySum; i++) {
 
                 for (var j = 0; j < conjugationList[i].length; j++) {
                     $("#quickRef").append(conjugationList[i][j] + "\t");
@@ -146,6 +153,7 @@
             }
             // var conjugationList = JSON.parse(result);
             // console.log(conjugationList);
+            setCard(wordKeyCounter);
         });
 
 
