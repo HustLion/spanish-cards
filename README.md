@@ -14,6 +14,7 @@ Web-based flashcards system to practice spanish conjugation effectively
 
 Online demo:
 
+<https://hustlion.github.io/spanish-cards/>
 
 Local test
 
